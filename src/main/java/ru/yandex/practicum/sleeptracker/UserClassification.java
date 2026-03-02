@@ -24,18 +24,18 @@ public class UserClassification implements Function<List<SleepingSession>, Sleep
 
         long owlNights = sleepingSessions
                 .stream()
-                .filter(session -> session.startSession.toLocalTime().
-                        isAfter(LocalTime.of(23, 0))
-                        && session.endSession.toLocalTime().
-                        isAfter(LocalTime.of(9, 0)))
+                .filter(session -> session.startSession.toLocalTime()
+                        .isAfter(LocalTime.of(23, 0))
+                        && session.endSession.toLocalTime()
+                        .isAfter(LocalTime.of(9, 0)))
                 .count();
 
         long larkNights = sleepingSessions
                 .stream()
-                .filter(session -> session.startSession.toLocalTime().
-                        isBefore(LocalTime.of(22, 0))
-                        && session.endSession.toLocalTime().
-                        isBefore(LocalTime.of(7, 0)))
+                .filter(session -> session.startSession.toLocalTime()
+                        .isBefore(LocalTime.of(22, 0))
+                        && session.endSession.toLocalTime()
+                        .isBefore(LocalTime.of(7, 0)))
                 .count();
 
         long pigeonNights = sleepNights - larkNights - owlNights;
