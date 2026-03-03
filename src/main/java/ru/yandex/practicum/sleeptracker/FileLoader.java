@@ -20,9 +20,8 @@ public class FileLoader {
 
         ArrayList<String> sessionsFromLog = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(file, UTF_8))) {
-            String line;
             while (br.ready()) {
-                line = br.readLine().trim();
+                String line = br.readLine().trim();
                 sessionsFromLog.add(line);
             }
         } catch (IOException e) {

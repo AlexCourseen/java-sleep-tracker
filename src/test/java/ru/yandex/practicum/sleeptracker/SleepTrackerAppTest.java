@@ -30,13 +30,13 @@ public class SleepTrackerAppTest {
                 LocalDateTime.parse("01.10.25 23:15", formatter), SleepQuality.GOOD);
         sessions.add(session1);
         sessions.add(session2);
-        assertEquals(2, (long) countSessions.apply(sessions).result);
+        assertEquals(2, (long) countSessions.apply(sessions).getResult());
     }
 
     @Test
     void shouldReturn0IfNoSleepSessions() {
         CountSessions countSessions = new CountSessions();
-        assertEquals(0, (long) countSessions.apply(sessions).result);
+        assertEquals(0, (long) countSessions.apply(sessions).getResult());
     }
 
     @Test
@@ -48,13 +48,13 @@ public class SleepTrackerAppTest {
                 LocalDateTime.parse("01.10.25 23:35", formatter), SleepQuality.GOOD);
         sessions.add(session1);
         sessions.add(session2);
-        assertEquals(10, (long) minSessionDuration.apply(sessions).result);
+        assertEquals(10, (long) minSessionDuration.apply(sessions).getResult());
     }
 
     @Test
     void shouldReturnMin0IfNoSleepSessions() {
         MinSessionDuration minSessionDuration = new MinSessionDuration();
-        assertEquals(0, (long) minSessionDuration.apply(sessions).result);
+        assertEquals(0, (long) minSessionDuration.apply(sessions).getResult());
     }
 
     @Test
@@ -67,13 +67,13 @@ public class SleepTrackerAppTest {
         sessions.add(session1);
         sessions.add(session2);
 
-        assertEquals(20, (long) maxSessionDuration.apply(sessions).result);
+        assertEquals(20, (long) maxSessionDuration.apply(sessions).getResult());
     }
 
     @Test
     void shouldReturnMax0IfNoSleepSessions() {
         MaxSessionDuration maxSessionDuration = new MaxSessionDuration();
-        assertEquals(0, (long) maxSessionDuration.apply(sessions).result);
+        assertEquals(0, (long) maxSessionDuration.apply(sessions).getResult());
     }
 
     @Test
@@ -86,13 +86,13 @@ public class SleepTrackerAppTest {
         sessions.add(session1);
         sessions.add(session2);
 
-        assertEquals(15, Integer.valueOf(averageSessionDuration.apply(sessions).result.toString()));
+        assertEquals(15, Integer.valueOf(averageSessionDuration.apply(sessions).getResult().toString()));
     }
 
     @Test
     void shouldReturnAverage0IfNoSleepSessions() {
         AverageSessionDuration averageSessionDuration = new AverageSessionDuration();
-        assertEquals(0, Integer.valueOf(averageSessionDuration.apply(sessions).result.toString()));
+        assertEquals(0, Integer.valueOf(averageSessionDuration.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -109,7 +109,7 @@ public class SleepTrackerAppTest {
         sessions.add(session2);
         sessions.add(session3);
 
-        assertEquals(2, Integer.valueOf(countOfBadSessions.apply(sessions).result.toString()));
+        assertEquals(2, Integer.valueOf(countOfBadSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -126,7 +126,7 @@ public class SleepTrackerAppTest {
         sessions.add(session2);
         sessions.add(session3);
 
-        assertEquals(0, Integer.valueOf(countOfBadSessions.apply(sessions).result.toString()));
+        assertEquals(0, Integer.valueOf(countOfBadSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -147,7 +147,7 @@ public class SleepTrackerAppTest {
         sessions.add(session3);
         sessions.add(session4);
 
-        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).result.toString()));
+        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -162,7 +162,7 @@ public class SleepTrackerAppTest {
         sessions.add(session1);
         sessions.add(session2);
 
-        assertEquals(0, Integer.valueOf(countOfSleeplessSessions.apply(sessions).result.toString()));
+        assertEquals(0, Integer.valueOf(countOfSleeplessSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -177,7 +177,7 @@ public class SleepTrackerAppTest {
         sessions.add(session1);
         sessions.add(session2);
 
-        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).result.toString()));
+        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class SleepTrackerAppTest {
         sessions.add(session2);
         sessions.add(session3);
 
-        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).result.toString()));
+        assertEquals(2, Integer.valueOf(countOfSleeplessSessions.apply(sessions).getResult().toString()));
     }
 
     @Test
@@ -225,7 +225,7 @@ public class SleepTrackerAppTest {
         sessions.add(session6);
         sessions.add(session7);
 
-        assertEquals("Сова", userClassification.apply(sessions).result);
+        assertEquals("Сова", userClassification.apply(sessions).getResult());
     }
 
     @Test
@@ -249,7 +249,7 @@ public class SleepTrackerAppTest {
         sessions.add(session4);
         sessions.add(session5);
 
-        assertEquals("Голубь", userClassification.apply(sessions).result);
+        assertEquals("Голубь", userClassification.apply(sessions).getResult());
     }
 
     @Test
@@ -273,6 +273,6 @@ public class SleepTrackerAppTest {
         sessions.add(session4);
         sessions.add(session5);
 
-        assertEquals("Жаворонок", userClassification.apply(sessions).result);
+        assertEquals("Жаворонок", userClassification.apply(sessions).getResult());
     }
 }

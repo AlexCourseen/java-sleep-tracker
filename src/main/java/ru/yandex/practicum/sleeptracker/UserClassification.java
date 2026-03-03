@@ -6,35 +6,35 @@ import java.util.List;
 import java.util.function.Function;
 
 public class UserClassification implements Function<List<SleepingSession>, SleepAnalysisResult> {
+    final String fnDescription = "Тип пользователя";
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sleepingSessions) {
-        Object result;
-        String fnDescription = "Тип пользователя";
+        String result;
         LocalTime midnight = LocalTime.of(0, 0);
         LocalTime endNight = LocalTime.of(6, 0);
 
         long sleepNights = sleepingSessions
                 .stream()
-                .filter(session -> Period.between(session.startSession.toLocalDate(),
-                        session.endSession.plusMinutes(1).toLocalDate()).getDays() > 0
-                        || (session.startSession.toLocalTime().isBefore(endNight)
-                        && session.startSession.toLocalTime().isAfter(midnight)))
+                .filter(session -> Period.between(session.getStartSession().toLocalDate(),
+                        session.getEndSession().plusMinutes(1).toLocalDate()).getDays() > 0
+                        || (session.getStartSession().toLocalTime().isBefore(endNight)
+                        && session.getStartSession().toLocalTime().isAfter(midnight)))
                 .count();
 
         long owlNights = sleepingSessions
                 .stream()
-                .filter(session -> session.startSession.toLocalTime()
+                .filter(session -> session.getStartSession().toLocalTime()
                         .isAfter(LocalTime.of(23, 0))
-                        && session.endSession.toLocalTime()
+                        && session.getEndSession().toLocalTime()
                         .isAfter(LocalTime.of(9, 0)))
                 .count();
 
         long larkNights = sleepingSessions
                 .stream()
-                .filter(session -> session.startSession.toLocalTime()
+                .filter(session -> session.getStartSession().toLocalTime()
                         .isBefore(LocalTime.of(22, 0))
-                        && session.endSession.toLocalTime()
+                        && session.getEndSession().toLocalTime()
                         .isBefore(LocalTime.of(7, 0)))
                 .count();
 
