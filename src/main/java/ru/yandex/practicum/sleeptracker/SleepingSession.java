@@ -4,16 +4,16 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class SleepingSession {
-    final private LocalDateTime startSession;
-    final private LocalDateTime endSession;
-    final private Duration durationSession;
-    final private SleepQuality sleepQuality;
+    private final LocalDateTime startSession;
+    private final LocalDateTime endSession;
+    private final Duration durationSession;
+    private final SleepQuality sleepQuality;
 
-    public SleepingSession(LocalDateTime startSession,LocalDateTime endSession,SleepQuality sleepQuality) {
+    public SleepingSession(LocalDateTime startSession, LocalDateTime endSession, SleepQuality sleepQuality) {
         this.startSession = startSession;
         this.endSession = endSession;
         this.sleepQuality = sleepQuality;
-        durationSession = Duration.between(startSession,endSession);
+        this.durationSession = Duration.between(startSession, endSession);
     }
 
     @Override
@@ -25,6 +25,7 @@ public class SleepingSession {
                 ", sleepQuality=" + sleepQuality +
                 '}';
     }
+
     public LocalDateTime getStartSession() {
         return startSession;
     }
